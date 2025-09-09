@@ -1,3 +1,5 @@
+let arr = [];
+
 const asideCategoriesSection = document.getElementById(
   "aside-categories-section"
 );
@@ -5,23 +7,8 @@ const cardSection = document.getElementById("card-section");
 let totalAmountValue = document.getElementById("total-amount").innerText;
 let totalAmount = document.getElementById("total-amount");
 // const cardDivTree=document.getElementById("card-div-tree")
-let arr = [];
 
-// delete function
-const deleteFunction = (id) => {
-  //  console.log(id)
-  let arr2=[]
-  for (const value of arr){
-    if (value.id !== id){
-       arr2.push(value)
-    }
-  }
-  
-  console.log(arr2)
-
-  console.log(arr2);
-};
-
+// console.log(arr)
 // Loding function
 const loading = (isTrue) => {
   if (isTrue === true) {
@@ -104,7 +91,7 @@ cardSection.addEventListener("click", (e) => {
     );
     totalCartSectionInnerDiv.innerHTML = `
            <div>
-            <p class="font-bold">${treeCardTreeName}</p>
+            <p class="font-bold">${treeCardTreeName}</p> 
             <p>৳ ${treePrice}</p>
           </div>
           <div>
@@ -120,6 +107,16 @@ cardSection.addEventListener("click", (e) => {
     // .childNodes[0].childNodes[1].childNodes[9].innerText
   }
 });
+// delete function
+
+const deleteFunction = (id) => {
+  console.log(id);
+  let arr2 = arr.filter((item) => item.id !== id);
+  arr = arr2;
+  console.log(arr);
+
+  // arr.push(arr2)
+};
 
 // Reuseble function
 
@@ -137,7 +134,7 @@ const cardShowingFunction = (treeCardDataForFun) => {
         <h1 id=${value.id} class="tree-name inline my-6 font-bold text-lg hover:text-orange-300 hover:cursor-pointer" >${value.name}</h1>
         <p class="text-xs">${value.description}</p>
        <div  class="flex justify-between items-center">
-        <button id="" class="btn bg-slate-300 rounded-2xl p-3">${value.category}</button>
+        <button id="" class="btn bg-slate-300 rounded-2xl p-3 ">${value.category}</button>
         <p>৳ <span class="price" id="tree-price">${value.price}</span></p>
        </div>
        <button id=""  class="btn add-to-cart w-full rounded-lg bg-[#15803D]  hover:bg-[#15603D]  hover:cursor-pointer hover:text-white">Add to Cart</button>
@@ -164,10 +161,11 @@ const AllCategoriesDataLoad = () => {
 
 const showAllCategories = (categorie) => {
   // console.log(value)
+
   categorie.forEach((value) => {
     const allCategories = document.getElementById("all-categories");
     const allCategoriesshowingDiv = document.createElement("div");
-    allCategoriesshowingDiv.innerHTML = `<button class="hover:cursor-pointer active:border-b-2 active:text-green-500" onclick="treeCardLoadFunction(${value.id})" id="{value.id}">${value.category_name}</button>`;
+    allCategoriesshowingDiv.innerHTML = `<button class="hover:cursor-pointer active:text-green-500" onclick="treeCardLoadFunction(${value.id})" id="catagories-button-id">${value.category_name}</button>`;
     allCategories.appendChild(allCategoriesshowingDiv);
   });
 };
