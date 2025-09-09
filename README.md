@@ -8,7 +8,7 @@ Ans:map() return a new array,forEach() showing array all value but forEach( have
 
 #### 3) What are arrow functions in ES6?
 
-And:Arrow function simply way to declare a function.
+Ans:Arrow function simply way to declare a function.
 
 #### 4) How does destructuring assignment work in ES6?
 
