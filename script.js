@@ -110,10 +110,18 @@ cardSection.addEventListener("click", (e) => {
 // delete function
 
 const deleteFunction = (id) => {
-  console.log(id);
-  let arr2 = arr.filter((item) => item.id !== id);
-  arr = arr2;
-  console.log(arr);
+  if (totalAmountValue === 0){
+    return
+  }
+  for (const value of arr) {
+    console.log(typeof value.id, typeof id);
+  
+    if (value.id == id) {
+      const latestAddprice = parseInt(totalAmountValue) - parseInt(value.price);
+      totalAmountValue = latestAddprice;
+      totalAmount.innerText = latestAddprice;
+    }
+  }
 
   // arr.push(arr2)
 };
